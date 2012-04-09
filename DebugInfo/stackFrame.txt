@@ -1,0 +1,31 @@
+PC: 0x7A8C4BE8 LR: 0x7A8C4BE9 Stack PTR : 0x09A7E840 
+0x7A8C4BE8 Osp::Ui::Controls::Tab::AddItem(Osp::Base::String const&, int)
+0x7A8C4BE9 Osp::Ui::Controls::Tab::AddItem(Osp::Base::String const&, int)
+0x7BD14549 Form1::OnInitializing()
+0x7BD224D4 0x000114D4+WatchList.exe
+0x7A825E3D Osp::Ui::Container::GetControl(Osp::Base::String const&, bool) const
+0x7BD224D4 0x000114D4+WatchList.exe
+0x7A825E3D Osp::Ui::Container::GetControl(Osp::Base::String const&, bool) const
+0x7BD14549 Form1::OnInitializing()
+0x7AA1C804 0x006A1804+FOsp.so
+0x7AC110A8 0x008960A8+FOsp.so
+0x7AC110A8 0x008960A8+FOsp.so
+0x7AABE840 0x00743840+FOsp.so
+0x7AC110A8 0x008960A8+FOsp.so
+0x7AC110A8 0x008960A8+FOsp.so
+0x7AC322F8 0x008B72F8+FOsp.so
+0x7A8282F5 Osp::Ui::Control::AddNotify()
+0x7AC110A8 0x008960A8+FOsp.so
+0x7AC110A8 0x008960A8+FOsp.so
+0x7AC111A8 0x008961A8+FOsp.so
+0x7A826349 Osp::Ui::Container::AddNotify()
+0x7A8262CD Osp::Ui::Container::AddNotify()
+0x7AC322F8 0x008B72F8+FOsp.so
+0x7AC322F8 0x008B72F8+FOsp.so
+0x7AC322F8 0x008B72F8+FOsp.so
+0x7A875F51 Osp::Ui::Controls::Form::AddToParent(Osp::Ui::Container const&, int, int, int, int)
+0x7AC110A8 0x008960A8+FOsp.so
+0x7AC13940 0x00898940+FOsp.so
+0x7AC322F8 0x008B72F8+FOsp.so
+0x7A8281D7 Osp::Ui::Control::GetBounds() const
+0x7AC322F8 0x008B72F8+FOsp.so
