@@ -302,7 +302,8 @@ src/WatchList.d src/WatchList.o: ../src/WatchList.cpp \
  C:/bada/sdk/include/FLclCalendar.h \
  C:/bada/sdk/include/FLclDateTimeSymbols.h \
  C:/bada/sdk/include/FLclGregorianCalendar.h \
- C:/bada/sdk/WatchList/inc/DatabaseItems.h
+ C:/bada/sdk/WatchList/inc/DatabaseItems.h \
+ C:/bada/sdk/WatchList/inc/Movie.h
 
 C:/bada/sdk/WatchList/inc/WatchList.h:
 
@@ -1023,3 +1024,5 @@ C:/bada/sdk/include/FLclDateTimeSymbols.h:
 C:/bada/sdk/include/FLclGregorianCalendar.h:
 
 C:/bada/sdk/WatchList/inc/DatabaseItems.h:
+
+C:/bada/sdk/WatchList/inc/Movie.h:

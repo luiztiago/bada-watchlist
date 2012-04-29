@@ -7,6 +7,7 @@ CPP_SRCS += \
 ../src/DatabaseForm.cpp \
 ../src/DatabaseItems.cpp \
 ../src/Form1.cpp \
+../src/Movie.cpp \
 ../src/WatchList.cpp \
 ../src/WatchListEntry.cpp 
 
@@ -14,6 +15,7 @@ OBJS += \
 ./src/DatabaseForm.o \
 ./src/DatabaseItems.o \
 ./src/Form1.o \
+./src/Movie.o \
 ./src/WatchList.o \
 ./src/WatchListEntry.o 
 
@@ -21,6 +23,7 @@ CPP_DEPS += \
 ./src/DatabaseForm.d \
 ./src/DatabaseItems.d \
 ./src/Form1.d \
+./src/Movie.d \
 ./src/WatchList.d \
 ./src/WatchListEntry.d 
 

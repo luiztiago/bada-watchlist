@@ -1,0 +1,27 @@
+----------------------------------------------------------------------------------
+----------------------------- Application Information ----------------------------
+----------------------------------------------------------------------------------
+ Application Name    : WatchList
+ Application ID      : 93bt1p123e
+ Application Version : 1.0.0
+ API Version         : 2.0
+ Platform Version    : 2.0.0
+ Firmware Version    : WaveH-EXXKC4
+ Crashed Time        : 2012/04/29 07:37:05
+ Crashed Module      : FOsp.so
+----------------------------------------------------------------------------------
+
+
+
+----------------------------------------------------------------------------------
+----------------------------- Recent AppLog Messages -----------------------------
+----------------------------------------------------------------------------------
+[0] 0086.347,INFO,P32,T00,A120,OspMain (32) > Application started.
+[1] 0090.679,INFO,P32,T00,A124,Form1::OnInitializing (46) > Button 2 
+[2] 0090.703,INFO,P32,T00,A124,Form1::OnInitializing (71) > Tem tab :) 
+[3] 0090.741,INFO,P32,T00,A124,Form1::OnInitializing (102) > Button 1 
+[4] 0090.742,INFO,P32,T00,A124,Form1::OnInitializing (105) > Button 1 existe 
+[5] 0107.040,INFO,P32,T00,A124,Form1::OnActionPerformed (127) > ####### OnActionPerformed called with ActionId(2)! #######
+[6] 0107.043,INFO,P32,T00,A124,Form1::OnActionPerformed (172) > Show second panel 
+[7] 0117.442,INFO,P32,T00,A124,Form1::OnActionPerformed (127) > ####### OnActionPerformed called with ActionId(101)! #######
+[8] 0117.444,INFO,P32,T00,A124,Form1::OnActionPerformed (132) > Button 1 is clicked! 

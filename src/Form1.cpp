@@ -1,10 +1,13 @@
 #include "Form1.h"
 #include "DatabaseForm.h"
 #include "DatabaseItems.h"
+#include "Movie.h"
 
 using namespace Osp::App;
 using namespace Osp::Base;
+using namespace Osp::Base::Collection;
 using namespace Osp::Io;
+using namespace Osp::Graphics;
 using namespace Osp::Ui;
 using namespace Osp::Ui::Controls;
 
@@ -34,41 +37,29 @@ Form1::OnInitializing(void)
 {
 	result r = E_SUCCESS;
 
-		// TODO: Add your initialization code here
-
-	// Get a button via resource ID
-	__pButtonOk = static_cast<Button *>(GetControl(L"IDC_BUTTON1"));
-	AppLog("Button 1 \n");
-	if (__pButtonOk != null)
-	{
-		AppLog("Button 1 existe \n");
-		__pButtonOk->SetActionId(ID_BUTTON_1);
-		__pButtonOk->AddActionEventListener(*this);
-	}
-
-	__pButtonOk2 = static_cast<Button *>(GetControl(L"IDC_BUTTON2"));
-	AppLog("Button 2 \n");
-		if (__pButtonOk2 != null)
-		{
-			AppLog("Button 2 existe \n");
-			__pButtonOk2->SetActionId(ID_BUTTON_2);
-			__pButtonOk2->AddActionEventListener(*this);
-		}
-
 	ScrollPanel1_ = static_cast<ScrollPanel*>(this->GetControl("IDC_PANEL1"));
 	ScrollPanel2_ = static_cast<ScrollPanel*>(this->GetControl("IDC_PANEL2"));
 	ScrollPanel2_->SetShowState(false);
 
-	//Tab* pTab = GetTab();
-	//if (pTab)
-	//{
-	//	AppLog("Tem tab :) \n");
-	//	pTab->AddItem(L"Fiirst", ID_PANEL_1);
-	//	pTab->AddItem(L"Seecond", ID_PANEL_2);
-	//	pTab->AddActionEventListener(*this);
-	//}
+	__pList = static_cast<ListView*>(ScrollPanel1_->GetControl(L"IDC_LISTVIEW1"));
+	if (__pList)
+	{
+		AppLog("Tem lista :) \n");
+		//__pList->Construct(GetClientAreaBounds(), true, true);
+		__pList->SetItemProvider(*this);
+		__pList->AddListViewItemEventListener(*this);
+		//AddControl(*__pList);
+	}
 
-    TabBar *pTabbar1 = static_cast<TabBar *>(GetControl("IDC_TABBAR1"));
+	// TODO: Add your initialization code here
+	__pItems = new ArrayList();
+	__pItems->Construct();
+	//__pItems->Add(*(new String("Teste")));
+	//__pList->RefreshList(__pList->GetItemCount(), LIST_REFRESH_TYPE_ITEM_ADD);
+	//__pItems->Add(*(new Integer(1)));
+	//__pItems->Add(*(new Integer(2)));
+
+	TabBar *pTabbar1 = static_cast<TabBar *>(GetControl("IDC_TABBAR1"));
 	if (pTabbar1)
 	{
 		AppLog("Tem tab :) \n");
@@ -85,21 +76,25 @@ Form1::OnInitializing(void)
 		pTabbar1->AddActionEventListener(*this);
 	}
 
-	__pList = static_cast<ListView*>(GetControl(L"IDC_LISTVIEW1"));
-	if (__pList != null)
+	__pEditField = static_cast<EditField*>(ScrollPanel2_->GetControl(L"IDC_EDITFIELD1"));
+	if (__pEditField)
 	{
-		__pList->SetItemProvider(*this);
-		__pList->AddListViewItemEventListener(*this);
-		__pList->AddScrollEventListener(*this);
-	}
-
-	__pEditField = static_cast<EditField*>(GetControl(L"IDC_EDITFIELD1"));
-	if (__pEditField != null)
-	{
-		__pEditField->AddKeyEventListener(*this);
+		AppLog("Tem editfield :) \n");
+		//__pEditField->AddKeyEventListener(*this);
 		//__pList->AddItemEventListener(*this);
 		//pList->Hide();
 	}
+
+	Button *pButton1 = static_cast<Button *>(ScrollPanel2_->GetControl("IDC_BUTTON1"));
+	AppLog("Button 1 \n");
+	if (pButton1)
+	{
+		AppLog("Button 1 existe \n");
+		pButton1->SetActionId(ID_BUTTON_1);
+		pButton1->AddActionEventListener(*this);
+	}
+
+	AppLog("Quantidade %d", __pList->GetItemCount());
 
 	return r;
 
@@ -124,15 +119,19 @@ Form1::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
 	case ID_BUTTON_1:
 		{
 			AppLog("Button 1 is clicked! \n");
-		}
-		break;
-	case ID_BUTTON_2:
-		{
 			String texto = __pEditField->GetText();
 			if(texto != null) {
-				//AppLog("Button 2 is clicked! Valor: (%ls) \n", texto);
+				//SimpleItem * pItem = new SimpleItem();
+				//pItem->SetElement(texto);
+				__pItems->Add(texto);
+				//__pList->CreateItem(0, texto);
+				//__pList->UpdateList();
+				__pList->RefreshList(__pList->GetItemCount(), LIST_REFRESH_TYPE_ITEM_ADD);
+				//__pList->RefreshList(__pList->GetItemCount()-1, LIST_REFRESH_TYPE_ITEM_REMOVE);
+				ScrollPanel1_->SetShowState(true);
+				ScrollPanel2_->SetShowState(false);
+				this->RequestRedraw(true);
 			}
-			AppLog("Button 2 is clicked!");
 		}
 		break;
 	case ID_PANEL_1:
@@ -162,43 +161,27 @@ void
 Form1::OnTextBlockSelected(Osp::Ui::Control &source, int start, int end)
 {
 	// TODO: Add your implementation codes here
-
-}
-
-void
-Form1::OnKeyLongPressed(const Osp::Ui::Control &source, Osp::Ui::KeyCode keyCode)
-{
-	// TODO: Add your implementation codes here
-
-}
-
-void
-Form1::OnKeyPressed(const Osp::Ui::Control &source, Osp::Ui::KeyCode keyCode)
-{
-	// TODO: Add your implementation codes here
-
-}
-
-void
-Form1::OnKeyReleased(const Osp::Ui::Control &source, Osp::Ui::KeyCode keyCode)
-{
-	// TODO: Add your implementation codes here
-
 }
 
 int Form1::GetItemCount(void) {
-    return 0;
+    return __pItems->GetCount();
 }
 
 Osp::Ui::Controls::ListItemBase * Form1::CreateItem(int index,
                                                     int itemWidth) {
     AppLog("CreateItem()");
 
-    String text;
-    text.Format(100, L"SimpleItem #%d", index);
+    AppLog("Quantidade %d", __pList->GetItemCount());
+
+    Osp::Base::String* text = null;
+    String texto;
+    text = (Osp::Base::String*)__pItems->GetAt(index);
+    texto.Format(100, L"Filme: %d", text);
+    // tentei com cast, usando %s, %ls, %S e nenhum deles retornava a string correta
 
     SimpleItem * pItem = new SimpleItem();
-    pItem->SetElement(text);
+    pItem->Construct(Dimension(itemWidth, 100), LIST_ANNEX_STYLE_DETAILED);
+    pItem->SetElement(texto, null);
     return pItem;
 
 }
@@ -245,4 +228,53 @@ void Form1:: OnListViewItemLongPressed
               int elementId,
               bool &invokeListViewItemCallback) {
     AppLog("OnListViewItemLongPressed()");
+}
+
+void
+Form1::OnTouchDoublePressed(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo)
+{
+	// TODO: Add your implementation codes here
+
+}
+
+void
+Form1::OnTouchFocusIn(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo)
+{
+	// TODO: Add your implementation codes here
+
+}
+
+void
+Form1::OnTouchFocusOut(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo)
+{
+	// TODO: Add your implementation codes here
+
+}
+
+void
+Form1::OnTouchLongPressed(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo)
+{
+	// TODO: Add your implementation codes here
+
+}
+
+void
+Form1::OnTouchMoved(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo)
+{
+	// TODO: Add your implementation codes here
+
+}
+
+void
+Form1::OnTouchPressed(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo)
+{
+	// TODO: Add your implementation codes here
+
+}
+
+void
+Form1::OnTouchReleased(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo)
+{
+	// TODO: Add your implementation codes here
+
 }

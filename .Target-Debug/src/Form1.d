@@ -289,8 +289,10 @@ src/Form1.d src/Form1.o: ../src/Form1.cpp \
  C:/bada/sdk/include/FLclDateTimeSymbols.h \
  C:/bada/sdk/include/FLclGregorianCalendar.h \
  C:/bada/sdk/WatchList/inc/DatabaseItems.h \
+ C:/bada/sdk/WatchList/inc/Movie.h \
  C:/bada/sdk/WatchList/inc/DatabaseForm.h \
- C:/bada/sdk/WatchList/inc/DatabaseItems.h
+ C:/bada/sdk/WatchList/inc/DatabaseItems.h \
+ C:/bada/sdk/WatchList/inc/Movie.h
 
 C:/bada/sdk/WatchList/inc/Form1.h:
 
@@ -980,6 +982,10 @@ C:/bada/sdk/include/FLclGregorianCalendar.h:
 
 C:/bada/sdk/WatchList/inc/DatabaseItems.h:
 
+C:/bada/sdk/WatchList/inc/Movie.h:
+
 C:/bada/sdk/WatchList/inc/DatabaseForm.h:
 
 C:/bada/sdk/WatchList/inc/DatabaseItems.h:
+
+C:/bada/sdk/WatchList/inc/Movie.h:

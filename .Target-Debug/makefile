@@ -46,7 +46,7 @@ all: WatchList.exe
 WatchList.exe: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: bada C++ Linker'
-	@echo 'ldflags: -L"C:/bada/sdk/Model/WaveHVGA/Target" -L"C:/bada/sdk/WatchList/lib" -shared -mthumb -mthumb-interwork -mfpu=vfp -mfloat-abi=softfp -o"WatchList.exe" ./src/DatabaseForm.o ./src/DatabaseItems.o ./src/Form1.o ./src/WatchList.o ./src/WatchListEntry.o '
+	@echo 'ldflags: -L"C:/bada/sdk/Model/WaveHVGA/Target" -L"C:/bada/sdk/WatchList/lib" -shared -mthumb -mthumb-interwork -mfpu=vfp -mfloat-abi=softfp -o"WatchList.exe" ./src/DatabaseForm.o ./src/DatabaseItems.o ./src/Form1.o ./src/Movie.o ./src/WatchList.o ./src/WatchListEntry.o '
 	arm-samsung-nucleuseabi-g++ @ldflags @ldobjs  $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '

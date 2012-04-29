@@ -7,15 +7,16 @@
 #include <FUi.h>
 #include "DatabaseForm.h"
 #include "DatabaseItems.h"
+#include "Movie.h"
 
 class Form1 :
 	public Osp::Ui::Controls::Form,
 	public Osp::Ui::IActionEventListener,
  	public Osp::Ui::ITextBlockEventListener,
- 	public Osp::Ui::IKeyEventListener,
  	public Osp::Ui::Controls::IListViewItemProvider,
 	public Osp::Ui::Controls::IScrollEventListener,
-	public Osp::Ui::Controls::IListViewItemEventListener
+	public Osp::Ui::Controls::IListViewItemEventListener,
+ 	public Osp::Ui::ITouchEventListener
 {
 
 // Construction
@@ -31,10 +32,11 @@ protected:
 	static const int ID_PANEL_1 = 1;
 	static const int ID_PANEL_2 = 2;
 
-	Osp::Ui::Controls::Button *__pButtonOk;
-	Osp::Ui::Controls::Button *__pButtonOk2;
+	//Osp::Ui::Controls::Button *__pButtonOk2;
 	Osp::Ui::Controls::EditField *__pEditField;
 	Osp::Ui::Controls::ListView *__pList;
+	Osp::Base::Collection::ArrayList *__pItems;
+	//Osp::Ui::Controls::ArrayList *__pItems;
 
 	Osp::Base::String __databaseName;
 	DatabaseForm* dbForm;
@@ -45,10 +47,6 @@ public:
 	virtual void OnActionPerformed(const Osp::Ui::Control& source, int actionId);
 
 	virtual void OnTextBlockSelected(Osp::Ui::Control &source, int start, int end);
-
-	virtual void OnKeyLongPressed(const Osp::Ui::Control &source, Osp::Ui::KeyCode keyCode);
-	virtual void OnKeyPressed(const Osp::Ui::Control &source, Osp::Ui::KeyCode keyCode);
-	virtual void OnKeyReleased(const Osp::Ui::Control &source, Osp::Ui::KeyCode keyCode);
 
 	/* IListViewItemProvider methods */
 	virtual Osp::Ui::Controls::ListItemBase * CreateItem(int index,
@@ -89,7 +87,13 @@ public:
 	                  int elementId,
 	                  bool &invokeListViewItemCallback);
 
-
+	virtual void OnTouchDoublePressed(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo);
+	virtual void OnTouchFocusIn(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo);
+	virtual void OnTouchFocusOut(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo);
+	virtual void OnTouchLongPressed(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo);
+	virtual void OnTouchMoved(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo);
+	virtual void OnTouchPressed(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo);
+	virtual void OnTouchReleased(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo);
 };
 
 #endif	//_FORM1_H_
